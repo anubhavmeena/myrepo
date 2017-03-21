@@ -187,20 +187,6 @@ public class BST<T extends Comparable<T>> {
     }
 }
 
-class Node<T extends Comparable<T>> {
-    Node<T> parent;
-    Node<T> left;
-    Node<T> right;
-    T value;
-    
-    public Node(T key){
-        this.value = key;
-        this.left = null;
-        this.right = null;
-        this.parent = null;
-    }
-}
-
 class BTreePrinter {
 
     public static <T extends Comparable<T>> void printNode(Node<T> root) {
