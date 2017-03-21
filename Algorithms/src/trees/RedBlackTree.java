@@ -74,8 +74,46 @@ public class RedBlackTree<T extends Comparable<T>> {
         n.color = RBNode.RED;
         rbInsertFixUp(n);
     }
-    
-    void rbInsertFixUp(RBNode n){
+
+    void rbInsertFixUp(RBNode z) {
+        RBNode u = null;
+        while (z.parent.color == RBNode.RED) {
+            if (z.parent == z.parent.parent.left) {
+                u = z.parent.parent.right;
+                if (u.color == RBNode.RED) {
+                    z.parent.color = RBNode.BLACK;
+                    u.color = RBNode.BLACK;
+                    z.parent.parent.color = RBNode.RED;
+                    z = z.parent.parent;
+                } else {
+                    if (z == z.parent.right) {
+                        z = z.parent;
+                        leftRotate(z);
+                    }
+                    z.parent.color = RBNode.BLACK;
+                    z.parent.parent.color = RBNode.RED;
+                    rightRotate(z.parent.parent);
+                }
+            }
+            else{
+                u = z.parent.parent.left;
+                if (u.color == RBNode.RED) {
+                    z.parent.color = RBNode.BLACK;
+                    u.color = RBNode.BLACK;
+                    z.parent.parent.color = RBNode.RED;
+                    z = z.parent.parent;
+                } else {
+                    if (z == z.parent.left) {
+                        z = z.parent;
+                        rightRotate(z);
+                    }
+                    z.parent.color = RBNode.BLACK;
+                    z.parent.parent.color = RBNode.RED;
+                    leftRotate(z.parent.parent);
+                }
+            }
+        }
+        root.color = RBNode.BLACK;
     }
 
 }
