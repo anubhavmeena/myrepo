@@ -47,10 +47,10 @@ public class PriorityQ<K extends Comparable<K>> {
         int r = right(i);
         int largest = i;
 
-        if (l < qSize && A[l].compareTo(A[i]) > 0) {
+        if (l < qSize && A[l].compareTo(A[i]) < 0) {
             largest = l;
         }
-        if (r < qSize && A[r].compareTo(A[largest]) > 0) {
+        if (r < qSize && A[r].compareTo(A[largest]) < 0) {
             largest = r;
         }
 
