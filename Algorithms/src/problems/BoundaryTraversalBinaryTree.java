@@ -13,7 +13,7 @@ import trees.Node;
  * @author ANMEENA
  */
 public class BoundaryTraversalBinaryTree {
-    public static int printBoundary(Node root){
+    public static void printBoundary(Node root){
         Node n = root;
         while(n!=null){
             System.out.println(n);
@@ -32,7 +32,7 @@ public class BoundaryTraversalBinaryTree {
         bst.insert(22);
         bst.insert(25);
         bst.prettyPrint();
-        printBoundary(bst.root,bst.root,0);
+        //printBoundary(bst.root,bst.root,0);
         
     }
 }

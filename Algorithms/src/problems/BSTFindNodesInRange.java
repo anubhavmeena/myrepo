@@ -14,7 +14,7 @@ import trees.Node;
  */
 public class BSTFindNodesInRange {
 
-    public static int getRangeNodes(Node root, Range range) {
+    public static int getRangeNodes(Node root, Rangee range) {
         if (root == null) {
             return 0;
         }
@@ -40,16 +40,16 @@ public class BSTFindNodesInRange {
         bst.insert(87);
         bst.insert(33);
         bst.prettyPrint();
-        System.out.println(getRangeNodes(bst.root, new Range(0, 10)));
+        System.out.println(getRangeNodes(bst.root, new Rangee(0, 10)));
     }
 }
 
-class Range {
+class Rangee {
 
     Comparable min;
     Comparable max;
 
-    Range(Comparable min, Comparable max) {
+    Rangee(Comparable min, Comparable max) {
         this.min = min;
         this.max = max;
     }

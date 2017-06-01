@@ -18,11 +18,11 @@ import java.util.List;
 public class BST<T extends Comparable<T>> {
     public Node<T> root;
     
-    public void insert(T key){
+    public BST insert(T key){
         Node n = new Node(key);
         if(root==null){
             root = n;
-            return;
+            return this;
         }
         Node t = root;
         Node y = root;
@@ -42,6 +42,7 @@ public class BST<T extends Comparable<T>> {
         else{
             y.right = n;
         }
+        return this;
     }
     
     public Node<T> min(Node n){
