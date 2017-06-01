@@ -8,6 +8,7 @@ package problems;
 import graphs.Graph;
 import graphs.Vertex;
 import java.awt.Color;
+import java.util.HashSet;
 import static problems.MinMoves.findMinPath;
 
 /**
@@ -34,28 +35,28 @@ public class BooleanMatrix {
         for (int i = 0; i < M.length; i++) {
             for (int j = 0; j < M[i].length; j++) {
                 if (M[i][j] != 0) {
-                    if (g.getVertex(i, j + 1) != null && g.getVertex(i, j + 1).value != 0) {
+                    if (g.getVertex(i, j + 1) != null && g.getVertex(i, j + 1).key != 0) {
                         g.addEdge(g.getVertex(i, j), g.getVertex(i, j + 1), 1);
                     }
-                    if (g.getVertex(i + 1, j) != null && g.getVertex(i + 1, j).value != 0) {
+                    if (g.getVertex(i + 1, j) != null && g.getVertex(i + 1, j).key != 0) {
                         g.addEdge(g.getVertex(i, j), g.getVertex(i + 1, j), 1);
                     }
-                    if (g.getVertex(i + 1, j + 1) != null && g.getVertex(i + 1, j+1).value != 0) {
+                    if (g.getVertex(i + 1, j + 1) != null && g.getVertex(i + 1, j+1).key != 0) {
                         g.addEdge(g.getVertex(i, j), g.getVertex(i + 1, j+1), 1);
                     }
-                    if (g.getVertex(i - 1, j) != null && g.getVertex(i - 1, j).value != 0) {
+                    if (g.getVertex(i - 1, j) != null && g.getVertex(i - 1, j).key != 0) {
                         g.addEdge(g.getVertex(i, j), g.getVertex(i - 1, j), 1);
                     }
-                    if (g.getVertex(i - 1, j - 1) != null && g.getVertex(i - 1, j - 1).value != 0) {
+                    if (g.getVertex(i - 1, j - 1) != null && g.getVertex(i - 1, j - 1).key != 0) {
                         g.addEdge(g.getVertex(i, j), g.getVertex(i - 1, j - 1), 1);
                     }
-                    if (g.getVertex(i, j-1) != null && g.getVertex(i, j-1).value != 0) {
+                    if (g.getVertex(i, j-1) != null && g.getVertex(i, j-1).key != 0) {
                         g.addEdge(g.getVertex(i, j), g.getVertex(i, j-1), 1);
                     }
-                    if (g.getVertex(i - 1, j+1) != null && g.getVertex(i - 1, j+1).value != 0) {
+                    if (g.getVertex(i - 1, j+1) != null && g.getVertex(i - 1, j+1).key != 0) {
                         g.addEdge(g.getVertex(i, j), g.getVertex(i - 1, j+1), 1);
                     }
-                    if (g.getVertex(i + 1, j-1) != null && g.getVertex(i + 1, j-1).value != 0) {
+                    if (g.getVertex(i + 1, j-1) != null && g.getVertex(i + 1, j-1).key != 0) {
                         g.addEdge(g.getVertex(i, j), g.getVertex(i + 1, j-1), 1);
                     }
                 }
@@ -63,10 +64,10 @@ public class BooleanMatrix {
         }
         int max = 0;
         for(Vertex s : g.vertices){
-            if(s.value!=0 && s.color==Color.WHITE){
-                int r = g.BFS(s);
-                if(r > max){
-                    max = r;
+            if(s.key!=0 && s.color==Color.WHITE){
+                HashSet<Vertex> r = g.BFS(s);
+                if(r.size() > max){
+                    max = r.size();
                 }
             }
         }

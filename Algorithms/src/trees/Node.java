@@ -7,14 +7,13 @@ package trees;
 
 /**
  *
- * @author anubhav
- * @param <T>
+ * @author ANMEENA
  */
 public class Node<T extends Comparable<T>> {
-    Node<T> parent;
-    Node<T> left;
-    Node<T> right;
-    T value;
+    public Node<T> parent;
+    public Node<T> left;
+    public Node<T> right;
+    public T value;
     
     public Node(T key){
         this.value = key;

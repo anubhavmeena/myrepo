@@ -10,6 +10,7 @@ import graphs.Graph;
 import static graphs.Graph.time;
 import graphs.Vertex;
 import java.awt.Color;
+import java.util.HashSet;
 
 /**
  *
@@ -41,7 +42,7 @@ public class DelEdgeMinSubtreeSumDiff {
         u.color = Color.BLACK;
         u.f = time;
         //System.out.println("CurCost:"+cost);
-        return totalcost + u.value;
+        return totalcost + u.key;
     }
     
     public static Edge DFS(Graph g, Vertex s, int ts) {
@@ -76,11 +77,11 @@ public class DelEdgeMinSubtreeSumDiff {
         g.addEdge("2", "5", 1);
         g.addEdge("3", "6", 1);
         
-        int totalSum = g.BFS(g.getVertex("0"));
+        HashSet<Vertex> totalSum = g.BFS(g.getVertex("0"));
         
         System.out.println("TotalSum: "+totalSum);
         
-        System.out.println(DFS(g,g.getVertex("0"),totalSum).toString());
+        System.out.println(DFS(g,g.getVertex("0"),totalSum.size()).toString());
 
     }
 }

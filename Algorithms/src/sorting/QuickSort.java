@@ -51,11 +51,11 @@ public class QuickSort{
     public static void main(String[] args) {
         // TODO code application logic here
         Integer[] a = {13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11};
-        Character[] c = {'a', 'z', 'b', 'h', 'j', 'x'};
-        String[] s = {"apple","zebra","cat", "ball","owl","goat","donkey","pig","tiger"};
+        //Character[] c = {'a', 'z', 'b', 'h', 'j', 'x'};
+        //String[] s = {"apple","zebra","cat", "ball","owl","goat","donkey","pig","tiger"};
         
-        print(s);
-        sort(s);
-        print(s);
+        print(a);
+        sort(a);
+        print(a);
     }
 }

@@ -81,10 +81,10 @@ public class MinMoves {
                     if(M[i][j]==2){
                         destination = g.getVertex(String.valueOf(i)+String.valueOf(j));
                     }
-                    if(g.getVertex(i,j+1)!=null && g.getVertex(i,j+1).value!=0){
+                    if(g.getVertex(i,j+1)!=null && g.getVertex(i,j+1).key!=0){
                         g.addEdge(g.getVertex(i,j), g.getVertex(i,j+1), 1);
                     }
-                    if(g.getVertex(i+1,j)!=null && g.getVertex(i+1,j).value!=0){
+                    if(g.getVertex(i+1,j)!=null && g.getVertex(i+1,j).key!=0){
                         g.addEdge(g.getVertex(i,j), g.getVertex(i+1,j), 1);
                     }
                 }

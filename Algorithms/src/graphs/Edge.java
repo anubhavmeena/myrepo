@@ -6,12 +6,14 @@
 package graphs;
 
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author ANMEENA
  */
-public class Edge {
+public class Edge implements Comparable<Edge>,Cloneable{
 
     public Vertex u;
     public Vertex v;
@@ -24,7 +26,7 @@ public class Edge {
         this.cost = 0;
         isDirected = false;
     }
-    
+
     public Edge(Vertex u, Vertex v, boolean isdirected) {
         this.u = u;
         this.v = v;
@@ -38,25 +40,24 @@ public class Edge {
         this.cost = cost;
         isDirected = false;
     }
-    
+
     public Edge(Vertex u, Vertex v, Integer cost, boolean isDirected) {
         this.u = u;
         this.v = v;
         this.cost = cost;
         this.isDirected = isDirected;
     }
-    
+
     public boolean equals(Object o) {
 
         if (o instanceof Edge) {
             Edge e = (Edge) o;
-            if(this.isDirected==e.isDirected){
-                if(!this.isDirected){
+            if (this.isDirected == e.isDirected) {
+                if (!this.isDirected) {
                     if ((this.u == e.u && this.v == e.v) || (this.u == e.v && this.v == e.u)) {
                         return true;
                     }
-                }
-                else{
+                } else {
                     if (this.u == e.u && this.v == e.v) {
                         return true;
                     }
@@ -71,12 +72,33 @@ public class Edge {
         int hash = 3;
         hash = 47 * hash + Objects.hashCode(this.u);
         hash = 47 * hash + Objects.hashCode(this.v);
+        hash = 47 * hash + Objects.hashCode(this.isDirected);
+
         return hash;
     }
 
     public String toString() {
-        return u.name + " <----> " + v.name + " Cost: "+cost;
+        return u.name + " <----> " + v.name + " Cost: " + cost +"\n";
+    }
+
+    public Edge clone(){
+        try {
+            return (Edge)super.clone();
+        } catch (CloneNotSupportedException ex) {
+            Logger.getLogger(Edge.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public int compareTo(Edge o) {
+        if(this.cost < o.cost){
+            return -1;
+        }
+        else if(this.cost > o.cost){
+            return 1;
+        }
+        return 0;
     }
 
 }
-

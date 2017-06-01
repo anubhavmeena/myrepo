@@ -9,33 +9,36 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author ANMEENA
  */
-public class Vertex implements Comparable<Vertex> {
+public class Vertex implements Comparable<Vertex>, Cloneable {
 
     public String name;
-    public int value;
+    public int key;
     public List<Vertex> adjList;
     public int d;
     public int f;
     public int l;
     public Vertex p;
-    public boolean visited;
     public Color color;
 
     public Vertex(String name) {
         this.name = name;
         this.d = 0;
+        this.key = 0;
+        this.color = Color.WHITE;
         adjList = new ArrayList<>();
     }
-    
+
     public Vertex(String name, int value) {
         this.name = name;
         this.d = 0;
-        this.value = value;
+        this.key = value;
         this.color = Color.WHITE;
         adjList = new ArrayList<>();
     }
@@ -49,6 +52,10 @@ public class Vertex implements Comparable<Vertex> {
             }
         }
         return false;
+    }
+    
+    public int getDegree(){
+        return adjList.size();
     }
 
     @Override
@@ -70,6 +77,9 @@ public class Vertex implements Comparable<Vertex> {
 //    }
     @Override
     public int compareTo(Vertex o) {
+        if(this==o){
+            return 0;
+        }
         if (this.d < o.d) {
             return -1;
         }
@@ -80,6 +90,15 @@ public class Vertex implements Comparable<Vertex> {
     }
 
     public String toString() {
-        return "[" + this.name + "]" + " d=" + d + " f=" + f + " l=" + l +" val="+value;
+        return "[" + this.name + "]" + " d=" + d + " f=" + f + " l=" + l + " val=" + key;
+    }
+
+    public Vertex clone(){
+        try {
+            return (Vertex)super.clone();
+        } catch (CloneNotSupportedException ex) {
+            Logger.getLogger(Vertex.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }
